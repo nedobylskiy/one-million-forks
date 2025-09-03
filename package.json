@@ -1,11 +1,15 @@
 {
-  "name": "millon-forks-repo",
+  "name": "one-millon-forks",
   "version": "1.0.0",
   "description": "Fork this repo and become a part of the million-forks-repo",
-  "license": "ISC",
+  "license": "MIT",
   "author": "Andrei Nedobylskii",
   "type": "module",
   "main": "index.mjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nedobylskiy/one-million-forks"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
