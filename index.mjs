@@ -77,7 +77,7 @@ app.post('/webhook', async (req, res) => {
                 forksCount = parseInt(forksCount[1]) + 1;
             }
 
-            if (forksCount % 100) {
+            if (forksCount % 100 === 0) {
                 //Add this profile to ## Milestones section
                 newReadme = newReadme.replace('## Milestones', `## Milestones\n\n- 🎉 Reached ${forksCount} forks with a fork from [${forker.name ? forker.name : forker.username}](${forker.profileUrl}) (@${forker.username})\n`);
             }
