@@ -23,7 +23,7 @@ app.post('/webhook', async (req, res) => {
 
     webhooks.push({
         callback: async () => {
-            console.log('Get hook:', req.body);
+            //  console.log('Get hook:', req.body);
 
             let hook = req.body;
 
@@ -41,10 +41,7 @@ app.post('/webhook', async (req, res) => {
                 bio: ''
             };
 
-            let forksCount = hook.forkee.forks_count;
 
-
-            console.log('New forker:', forker.username);
             //Enrich with bio and name from api
             let request = await fetch(hook.forkee.owner.url);
             if (request.ok) {
@@ -57,8 +54,6 @@ app.post('/webhook', async (req, res) => {
                 }
             }
 
-
-            console.log('Forker data:', forker);
 
             let readme = fs.readFileSync('README.md', 'utf8');
 
@@ -76,6 +71,11 @@ app.post('/webhook', async (req, res) => {
 
             //Rebuild the readme
             let newReadme = readme.split('## Our last 10 forkers:')[0] + '## Our last 10 forkers:\n\n' + forkersTenList.join('\n') + '\n\n##' + readme.split('## Our last 10 forkers:')[1].split('##')[1];
+
+            let forksCount = newReadme.match(/## FORKS COUNT: (\d+)/);
+            if (forksCount && forksCount[1]) {
+                forksCount = parseInt(forksCount[1]) + 1;
+            }
 
             //Replace forks count "## FORKS COUNT: 0"
             newReadme = newReadme.replace(/## FORKS COUNT: \d+/g, `## FORKS COUNT: ${forksCount}`);
@@ -104,12 +104,12 @@ app.post('/webhook', async (req, res) => {
 
 //Synchronous processing of webhooks every second
 setInterval(async () => {
-    console.log('Webhooks in queue:', webhooks.length);
+    //console.log('Webhooks in queue:', webhooks.length);
     if (webhooks.length > 0) {
         let hook = webhooks.shift();
         try {
             await hook.callback();
-        }catch (e) {
+        } catch (e) {
             console.error('Error processing webhook:', e);
         }
     }
