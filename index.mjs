@@ -1,6 +1,8 @@
 import express from 'express';
 import * as fs from "node:fs";
 
+import fetch from "node-fetch";
+
 //Exec async
 import {exec} from "node:child_process";
 //Promisify exec
