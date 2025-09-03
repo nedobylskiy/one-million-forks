@@ -81,15 +81,15 @@ app.post('/webhook', async (req, res) => {
 
 
             console.log(newReadme);
-          /*  if (forksCount % 100 === 0) {
+            if (Number(forksCount) === 100 || Number(forksCount) === 500 || Number(forksCount) === 1000 || Number(forksCount) === 5000 || Number(forksCount) === 10000 || Number(forksCount) === 50000 || Number(forksCount) === 100000 || Number(forksCount) === 500000 || Number(forksCount) === 1000000) {
+                console.log(`Milestone reached: ${forksCount} forks! Adding to README.md`);
                 //Add this profile to ## Milestones section
                 newReadme = newReadme.replace('## Milestones', `## Milestones\n\n- 🎉 Reached ${forksCount} forks with a fork from [${forker.name ? forker.name : forker.username}](${forker.profileUrl}) (@${forker.username})\n`);
-            }*/
+            }
 
             //Replace forks count "## FORKS COUNT: 0"
             newReadme = newReadme.replace(/## FORKS COUNT: \d+/g, `## FORKS COUNT: ${forksCount}`);
 
-            newReadme += `## NOEXISTS`;
 
             fs.writeFileSync('README.md', newReadme);
 
