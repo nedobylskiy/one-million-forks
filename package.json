@@ -1,0 +1,15 @@
+{
+  "name": "millon-forks-repo",
+  "version": "1.0.0",
+  "description": "Fork this repo and become a part of the million-forks-repo",
+  "license": "ISC",
+  "author": "Andrei Nedobylskii",
+  "type": "module",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
