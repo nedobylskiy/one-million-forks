@@ -41,6 +41,8 @@ app.post('/webhook', async (req, res) => {
 
             let forksCount = hook.forkee.forks_count;
 
+
+            console.log('New forker:', forker.username);
             //Enrich with bio and name from api
             let request = await fetch(hook.forkee.owner.url);
             if (request.ok) {
@@ -53,6 +55,8 @@ app.post('/webhook', async (req, res) => {
                 }
             }
 
+
+            console.log('Forker data:', forker);
 
             let readme = fs.readFileSync('README.md', 'utf8');
 
@@ -83,6 +87,8 @@ app.post('/webhook', async (req, res) => {
             }
 
             fs.writeFileSync(`${folderName}/README.md`, `# ${forker.name ? forker.name : forker.username} (@${forker.username})\n\n- Profile: [${forker.profileUrl}](${forker.profileUrl})\n- Avatar: ![Avatar](${forker.avatarUrl})\n${forker.bio ? `- Bio: ${forker.bio}\n` : ''}`);
+
+            console.log('Updated README.md and created folder for forker');
 
             //Commit changes
             await execAsync('git add README.md && git add forkers && git commit -m "Add new forker: ' + forker.username + '" && git push');
