@@ -2,7 +2,7 @@
 
 <img src="image.png" alt="Forks" width="400"/>
 
-## FORKS COUNT: 1
+## FORKS COUNT: 0
 
 ## Join the Movement!
 
@@ -10,7 +10,6 @@ Want your name in the Hall of Fame? Just hit the "Fork" button. This is the _big
 
 ## Our last 10 forkers:
 
-- <a href="https://github.com/Fund-AEON"><img src="https://avatars.githubusercontent.com/u/99969908?v=4" alt="Fund-AEON" width="64" height="64" style="vertical-align:middle; border-radius:50%;"> Fund AEON | Critical Life Extension Foundation (@Fund-AEON)</a> - *Fund AEON - Critical Life Extension Foundation*
 - 💫 Become a first of the 10 forkers! 💫
 
 ## Why Fork?
