@@ -41,6 +41,7 @@ app.post('/webhook', async (req, res) => {
                 bio: ''
             };
 
+            console.log('New forker:', forker.username);
 
             //Enrich with bio and name from api
             let request = await fetch(hook.forkee.owner.url);
@@ -77,6 +78,8 @@ app.post('/webhook', async (req, res) => {
                 forksCount = parseInt(forksCount[1]) + 1;
             }
 
+
+            console.log(newReadme);
             if (forksCount % 100 === 0) {
                 //Add this profile to ## Milestones section
                 newReadme = newReadme.replace('## Milestones', `## Milestones\n\n- 🎉 Reached ${forksCount} forks with a fork from [${forker.name ? forker.name : forker.username}](${forker.profileUrl}) (@${forker.username})\n`);
@@ -99,6 +102,8 @@ app.post('/webhook', async (req, res) => {
 
             //Commit changes
             await execAsync('git add README.md && git add forkers && git commit -m "Add new forker" && git push');
+
+            console.log('Pushed changes to GitHub');
 
             res.status(200).send('OK');
         }
