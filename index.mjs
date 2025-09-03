@@ -72,7 +72,7 @@ app.post('/webhook', async (req, res) => {
 
             console.log(readme,'\n-------------------');
             //Rebuild the readme
-            let newReadme = readme.split('## Our last 10 forkers:')[0] + '## Our last 10 forkers:\n\n' + forkersTenList.join('\n') + '\n\n##' + readme.split('## Our last 10 forkers:')[1].split('##')[1];
+            let newReadme = readme.split('## Our last 10 forkers:')[0] + '## Our last 10 forkers:\n\n' + forkersTenList.join('\n') + '\n\n##' + readme.split('## Our last 10 forkers:')[1].split('##')[1] + '##' + readme.split('## Our last 10 forkers:')[1].split('##').slice(2).join('##');
             console.log(newReadme,'\n-------------------');
             let forksCount = newReadme.match(/## FORKS COUNT: (\d+)/);
             if (forksCount && forksCount[1]) {
