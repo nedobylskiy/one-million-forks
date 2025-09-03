@@ -1,6 +1,13 @@
 import express from 'express';
 import * as fs from "node:fs";
 
+//Exec async
+import exec from "node:child_process";
+//Promisify exec
+import {promisify} from "node:util";
+
+const execAsync = promisify(exec);
+
 const app = express();
 const PORT = 1337;
 
@@ -12,8 +19,8 @@ app.post('/webhook', async (req, res) => {
     let hook = req.body;
 
     if (!hook.forkee) {
-        console.log('No hook.forkee');
-        return res.status(400).send('Bad Request: Missing hook.forkee');
+        //  console.log('No hook.forkee');
+        return res.status(200).send('No forkee');
     }
 
 
@@ -69,6 +76,9 @@ app.post('/webhook', async (req, res) => {
     }
 
     fs.writeFileSync(`${folderName}/README.md`, `# ${forker.name ? forker.name : forker.username} (@${forker.username})\n\n- Profile: [${forker.profileUrl}](${forker.profileUrl})\n- Avatar: ![Avatar](${forker.avatarUrl})\n${forker.bio ? `- Bio: ${forker.bio}\n` : ''}`);
+
+    //Commit changes
+    await execAsync('git add README.md && git add forkers && git commit -m "Add new forker: ' + forker.username + '" && git push');
 
     res.status(200).send('OK');
 });
