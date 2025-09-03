@@ -70,17 +70,14 @@ app.post('/webhook', async (req, res) => {
             //Keep only the last 10 forkers
             forkersTenList = forkersTenList.slice(0, 10);
 
-            console.log(readme,'\n-------------------');
             //Rebuild the readme
             let newReadme = readme.split('## Our last 10 forkers:')[0] + '## Our last 10 forkers:\n\n' + forkersTenList.join('\n') + '\n\n##' + readme.split('## Our last 10 forkers:')[1].split('##')[1] + '##' + readme.split('## Our last 10 forkers:')[1].split('##').slice(2).join('##');
-            console.log(newReadme,'\n-------------------');
             let forksCount = newReadme.match(/## FORKS COUNT: (\d+)/);
             if (forksCount && forksCount[1]) {
                 forksCount = parseInt(forksCount[1]) + 1;
             }
 
 
-            console.log(newReadme);
             if (Number(forksCount) === 100 || Number(forksCount) === 500 || Number(forksCount) === 1000 || Number(forksCount) === 5000 || Number(forksCount) === 10000 || Number(forksCount) === 50000 || Number(forksCount) === 100000 || Number(forksCount) === 500000 || Number(forksCount) === 1000000) {
                 console.log(`Milestone reached: ${forksCount} forks! Adding to README.md`);
                 //Add this profile to ## Milestones section
