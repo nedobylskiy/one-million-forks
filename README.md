@@ -2,7 +2,7 @@
 
 <img src="image.png" alt="Forks" width="400"/>
 
-## FORKS COUNT: 99
+## FORKS COUNT: 0
 
 ## Join the Movement!
 
@@ -10,12 +10,14 @@ Want your name in the Hall of Fame? Just hit the "Fork" button. This is the _big
 
 ## Our last 10 forkers:
 
-- 💫 Become a first 10 forker! 💫
+- 💫 Become a first of the 10 forkers! 💫
 
 ## Why Fork?
 Forking this repository is a fun way to be part of a global community. Each fork represents a unique individual who has joined in on this quirky project. Plus, it's a great conversation starter!
 
 ## Milestones
+
+- No milestones yet. Be the first to set one!
 
 ## EOF 
   
