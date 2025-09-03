@@ -17,6 +17,8 @@ app.use(express.json());
 
 let webhooks = [];
 
+let milestonesEmojis = ['🎉', '🚀', '🏆', '🥈', '🥉', '🎖️', '🏅', '🏵️', '🎗️', '🏆', '🌟', '✨', '💫', '🔥', '💥', '🌈', '🎊', '🎈', '🎀', '🎁', '🎉', '🎆', '🎇', '🪅', '🪄', '💎', '👑', '💍', '🛡️', '⚔️', '🏹', '🗡️', '🔱', '🪓', '🛡️'];
+
 app.post('/webhook', async (req, res) => {
 
     console.log('Received webhook');
@@ -81,7 +83,13 @@ app.post('/webhook', async (req, res) => {
             if (Number(forksCount) === 100 || Number(forksCount) === 500 || Number(forksCount) === 1000 || Number(forksCount) === 5000 || Number(forksCount) === 10000 || Number(forksCount) === 50000 || Number(forksCount) === 100000 || Number(forksCount) === 500000 || Number(forksCount) === 1000000) {
                 console.log(`Milestone reached: ${forksCount} forks! Adding to README.md`);
                 //Add this profile to ## Milestones section
-                newReadme = newReadme.replace('## Milestones', `## Milestones\n\n- 🎉 Reached ${forksCount} forks with a fork from [${forker.name ? forker.name : forker.username}](${forker.profileUrl}) (@${forker.username})\n`);
+                newReadme = newReadme.replace('## Milestones', `## Milestones\n\n- ${milestonesEmojis.shift()} Reached ${forksCount} forks with a fork from [${forker.name ? forker.name : forker.username}](${forker.profileUrl}) (@${forker.username})\n`);
+            }
+
+            if (Number(forksCount) === 1) {
+                //First fork
+                console.log(`First fork! Adding to README.md`);
+                newReadme = newReadme.replace('## Milestones', `## Milestones\n\n- 🥇 This project got its first fork from [${forker.name ? forker.name : forker.username}](${forker.profileUrl}) (@${forker.username})\n`);
             }
 
             //Replace forks count "## FORKS COUNT: 0"
