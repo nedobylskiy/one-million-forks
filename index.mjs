@@ -93,7 +93,7 @@ app.post('/webhook', async (req, res) => {
             console.log('Updated README.md and created folder for forker');
 
             //Commit changes
-            await execAsync('git add README.md && git add forkers && git commit -m "Add new forker: ' + forker.username + '" && git push');
+            await execAsync('git add README.md && git add forkers && git commit -m "Add new forker" && git push');
 
             res.status(200).send('OK');
         }
@@ -113,7 +113,7 @@ setInterval(async () => {
             console.error('Error processing webhook:', e);
         }
     }
-}, 1000);
+}, 500);
 
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Running on http://localhost:${PORT}`);
