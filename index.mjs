@@ -17,6 +17,8 @@ let webhooks = [];
 
 app.post('/webhook', async (req, res) => {
 
+    console.log('Received webhook');
+
     webhooks.push({
         callback: async () => {
             console.log('Get hook:', req.body);
@@ -93,10 +95,15 @@ app.post('/webhook', async (req, res) => {
 });
 
 //Synchronous processing of webhooks every second
-setInterval(() => {
+setInterval(async () => {
+    console.log('Webhooks in queue:', webhooks.length);
     if (webhooks.length > 0) {
         let hook = webhooks.shift();
-        hook.callback();
+        try {
+            await hook.callback();
+        }catch (e) {
+            console.error('Error processing webhook:', e);
+        }
     }
 }, 1000);
 
