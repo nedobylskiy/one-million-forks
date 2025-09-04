@@ -2,7 +2,7 @@
 
 <img src="image.png" alt="Forks" width="400"/>
 
-## FORKS COUNT: 3
+## FORKS COUNT: 4
 
 ## Join the Movement!
 
@@ -10,6 +10,7 @@ Want your name in the Hall of Fame? Just hit the "Fork" button. This is the _big
 
 ## Our last 10 forkers:
 
+- <a href="https://github.com/EragonBY"><img src="https://avatars.githubusercontent.com/u/9264191?v=4" alt="EragonBY" width="64" height="64" style="vertical-align:middle; border-radius:50%;"> EragonBY</a> 
 - <a href="https://github.com/georgeci"><img src="https://avatars.githubusercontent.com/u/1969971?v=4" alt="georgeci" width="64" height="64" style="vertical-align:middle; border-radius:50%;"> Georgy (@georgeci)</a> 
 - <a href="https://github.com/dmt-space"><img src="https://avatars.githubusercontent.com/u/46646349?v=4" alt="dmt-space" width="64" height="64" style="vertical-align:middle; border-radius:50%;"> dmt-space</a> 
 - <a href="https://github.com/angkasawan2007"><img src="https://avatars.githubusercontent.com/u/138368236?v=4" alt="angkasawan2007" width="64" height="64" style="vertical-align:middle; border-radius:50%;"> Daniel (@angkasawan2007)</a> - *Web3 security and OSINT investigations*
